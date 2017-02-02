@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reproductor HTML5 y JS</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="estilos.css"/>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="reproductor">
+<div id="tituloCancion">Reproductor de música HTML5 y JS</div>
+
+<div id="player">
+<div id="caratula" ondragover="permitirSoltar(event)" ondrop="soltar(event)"> </div>
+<div id="info"> Arrastra un disco para escucharlo </div>
+<audio controls="true" id="controles"/>
+</div>
+<div id="lista">
+<img src="imagenes/cnco_peq.jpg" id="cnco" draggable="true" ondragstart="arrastrar(event)"><br>
+<img src="imagenes/melendi_peq.jpg" id="melendi" draggable="true" ondragstart="arrastrar(event)"><br>
+<img src="imagenes/uncover_peq.jpg" id="uncover" draggable="true" ondragstart="arrastrar(event)"><br>
+</div>
+</div>
+
+<script type="text/javascript">
+
+var audio = document.getElementById('controles');
+
+	function arrastrar(event){
+		event.dataTransfer.setData("id", event.target.id);
+		}
+
+	function permitirSoltar(event){
+		event.preventDefault();
+		$( "#caratula" ).empty();
+		}
+
+	function soltar(event){
+		event.preventDefault();
+		var id = event.dataTransfer.getData("id");
+
+		var nodeCopy = document.getElementById(id).cloneNode(true);
+		nodeCopy.id = ""+id+"2";
+		event.target.appendChild(nodeCopy);
+
+		$("#"+id+"2").css({"width":"250px", "height":"250px"})
+
+		if (id == "cnco") {
+		$("#tituloCancion").text("CNCO Reggaeton Lento").css("background-color","red");
+		audio.setAttribute('src', 'musica/cnco.mp3');
+		}
+		if (id == "melendi") {
+		$("#tituloCancion").text("Melendi Tocado y Undido").css("background-color","yellow");;
+		audio.setAttribute('src', 'musica/melendi.mp3');
+		}
+		if (id == "uncover") {
+		$("#tituloCancion").text("Zara Larsson Uncover Remix").css("background-color","green");;
+		audio.setAttribute('src', 'musica/uncover.mp3');
+		}
+		audio.play();
+		}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}GTFC Nueva Empresa{% endblock %}
+
+{% block body %}
+
+<h1>Crear Nuevo conf</h1><br>
+
+
+{{ form_start(form) }}
+
+<div>
+    <p>
+    {{ form_label(form.param, 'Nuevo parametro:', {'label_attr': {'class': ''}}) }}
+    </p>
+    {{ form_errors(form.param) }}
+    {{ form_widget(form.param, {'attr': {'class': 'caja'}}) }}
+    </div>
+
+<div>
+    <p>
+    {{ form_label(form.configuracion, 'Configuracion:', {'label_attr': {'class': ''}}) }}
+    </p>
+    {{ form_errors(form.configuracion) }}
+    {{ form_widget(form.configuracion, {'attr': {'class': ''}}) }}
+</div>
+
+{{ form_end(form) }}
+
+
+{% endblock %}

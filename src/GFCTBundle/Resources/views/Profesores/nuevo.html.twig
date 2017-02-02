@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}GTFC Nueva Empresa{% endblock %}
+
+{% block body %}
+
+<h1>Crear Empresa</h1><br>
+
+
+{{ form_start(form) }}
+
+<div>
+    <p>
+    {{ form_label(form.nombre, 'Nombre Profesor:', {'label_attr': {'class': ''}}) }}
+    </p>
+    {{ form_errors(form.nombre) }}
+    {{ form_widget(form.nombre, {'attr': {'class': 'caja'}}) }}
+    </div>
+
+<div>
+    <p>
+    {{ form_label(form.apellidos, 'Apellidos:', {'label_attr': {'class': ''}}) }}
+    </p>
+    {{ form_errors(form.apellidos) }}
+    {{ form_widget(form.apellidos, {'attr': {'class': ''}}) }}
+</div>
+
+  <div>
+    <p>
+    {{ form_label(form.departamento, 'Departamento:', {'label_attr': {'class': ''}}) }}
+    </p>
+    {{ form_errors(form.departamento) }}
+    {{ form_widget(form.departamento, {'attr': {'class': 'caja'}}) }}
+</div>
+
+{{ form_end(form) }}
+
+
+{% endblock %}

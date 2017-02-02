@@ -1,0 +1,77 @@
+gfct_homepage:
+    path:     /
+    defaults: { _controller: GFCTBundle:Default:index }
+prueba_nombre:
+    path:     /nombre/{nPila}
+    defaults: { _controller: GFCTBundle:Default:nombre }
+all_empresa:
+    path:     /Empresa/all
+    defaults: { _controller: GFCTBundle:Empresa:all }
+
+empresa_crear:
+    path:     /Empresa/crear
+    defaults: { _controller: GFCTBundle:Empresa:crearEmpresa }
+    
+nueva_empresa:
+    path:     /Empresa/nueva
+    defaults: { _controller: GFCTBundle:Empresa:nueva }    
+
+exito_empresa:
+    path:     /Empresa/msgExito
+    defaults: { _controller: GFCTBundle:Empresa:msgExito }    
+
+all_alumno:
+    path:     /Alumno/all
+    defaults: { _controller: GFCTBundle:Alumno:all }
+
+all_profesor:
+    path:     /Profesores/all
+    defaults: { _controller: GFCTBundle:Profesores:all }   
+
+exito_profesores:
+    path:     /Profesores/msgExito
+    defaults: { _controller: GFCTBundle:Profesores:msgExito }    
+
+nuevo_profesores:
+    path:     /Profesores/nuevo
+    defaults: { _controller: GFCTBundle:Profesores:nuevo }  
+
+api_nuevo:
+    path:     /Empresa
+    defaults: { _controller: GFCTBundle:Api:empresas }   
+    methods: [GET] 
+
+api_examen:
+    path:     /Empresa
+    defaults: { _controller: GFCTBundle:Api:profesores }   
+    methods: [GET] 
+    
+registro:
+    path:     /register
+    defaults: { _controller: GFCTBundle:Default:register } 
+
+admin:
+    path:     /admin
+    defaults: { _controller: GFCTBundle:Default:admin }     
+
+usuarioslogin:
+    path:     /usuarios/login
+    defaults: { _controller: GFCTBundle:Default:login }
+usuarioPrueba:
+    path:     /usuarioPrueba
+    defaults: { _controller: GFCTBundle:Default:usuarioPrueba }             
+
+usuarios:
+    path:     /usuarios
+    defaults: { _controller: GFCTBundle:Default:usuarios }       
+
+logout:
+    path: /usuarios/logout        
+
+conf:
+    path:     /Default/conf
+    defaults: { _controller: GFCTBundle:Default:conf }    
+
+nuevo_conf:
+    path:     /Default/nuevoConf
+    defaults: { _controller: GFCTBundle:Default:nuevoConf }  

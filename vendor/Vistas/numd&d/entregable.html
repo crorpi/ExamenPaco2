@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejemplos API HTML5</title>
+	<style type="text/css">
+	div{
+		border: 1px solid;
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+	}
+	</style>
+
+
+			<script type="text/javascript">
+
+	  var numero1=0;
+	  var numero2=0;
+
+		function permitirSoltar(event){
+			event.preventDefault();
+		}
+
+		function arrastrar(event){
+			event.dataTransfer.setData("id",event.target.id);
+			
+		}
+
+		function soltar(objeto,event){
+			event.preventDefault();
+			var id=event.dataTransfer.getData("id");
+
+			objeto.innerHTML="<img src="+id+".gif" + " id="+id+">";
+
+
+			resultado();
+
+
+		}
+
+		function resultado(){
+			var caja1=document.getElementById("caja1");
+			var caja2=document.getElementById("caja2");
+
+           if(caja1.children.length>=1 && caja2.children.length>=1){
+           		console.log(caja1.firstChild.getAttribute("id"));
+           		console.log(caja2.firstChild.getAttribute("id"));
+           		var suma=parseInt(caja1.firstChild.getAttribute("id")) + parseInt(caja2.firstChild.getAttribute("id"));
+
+           		document.getElementById("caja3").innerHTML=("<img src="+suma+".gif" + " id="+suma+">");
+
+           }
+
+
+		}
+
+	</script>
+
+</head>
+<body>
+
+
+	<div id="caja1" ondragover="permitirSoltar(event)" ondrop="soltar(this,event)"> </div>
+	<div id="caja2" ondragover="permitirSoltar(event)" ondrop="soltar(this,event)"> </div>
+	<div id="caja3"> </div>
+	<br>
+	<img src="0.gif" ondragstart="arrastrar(event)" draggable="true" id="0">
+	<img src="1.gif" ondragstart="arrastrar(event)" draggable="true" id="1">
+	<img src="2.gif" ondragstart="arrastrar(event)" draggable="true" id="2">
+	<img src="3.gif" ondragstart="arrastrar(event)" draggable="true" id="3">
+	<img src="4.gif" ondragstart="arrastrar(event)" draggable="true" id="4">
+	<img src="5.gif" ondragstart="arrastrar(event)" draggable="true" id="5">
+	<img src="6.gif" ondragstart="arrastrar(event)" draggable="true" id="6">
+	<img src="7.gif" ondragstart="arrastrar(event)" draggable="true" id="7">
+	<img src="8.gif" ondragstart="arrastrar(event)" draggable="true" id="8">
+	<img src="9.gif" ondragstart="arrastrar(event)" draggable="true" id="9">
+
+
+</body>
+</html>

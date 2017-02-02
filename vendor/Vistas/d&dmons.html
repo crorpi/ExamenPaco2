@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DrackANDdrop</title>
+	<style type="text/css">
+
+		div{
+
+			border: 1px solid;
+			width: 100px;
+			height: 100px;
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	
+	function permitirSoltar(event){
+		event.preventDefault();
+
+	}
+	function arrastar(event){
+
+		event.dataTransfer.setData("nombre",event.target.id);
+
+		console.log(event.target.id);
+
+	}
+
+	function soltar(event){
+
+		event.preventDefault();
+		var id=event.dataTransfer.getData("nombre");
+
+		event.target.appendChild(document.getElementById(id));
+	}
+
+
+</script>
+
+<div id="caja" ondragover="permitirSoltar(event)" ondrop="soltar(event)">	</div>
+
+<img src="monster.png" draggable="true" id="monster" ondragstart="arrastar(event)">
+
+</body>
+</html>

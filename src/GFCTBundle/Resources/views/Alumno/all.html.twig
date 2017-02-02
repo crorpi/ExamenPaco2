@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Alumnos y Empresas{% endblock %}
+
+
+
+  {% block body %}
+  <h1>GFCT</h1><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">Panel heading</div>
+        <table class="table">
+        <tr>
+          <th><b>Id</b></th>
+          <th><b>Nombre</b></th>
+          <th><b>Apellido1</b></th>
+          <th><b>Apellido2</b></th>
+          <th><b>ciclo</b></th>
+          <th><b>Nombre Empresa</b></th>
+        </tr>
+        {% for alumno in alumno %}
+        <tr>
+          <th>{{ alumno.id}}</th>
+          <th>{{ alumno.nombre }}</th>
+          <th>{{ alumno.apellido1 }}</th>
+          <th>{{ alumno.apellido2 }}</th>
+          <th>{{ alumno.ciclo }}</th>
+          <th>{{ alumno.empresa.nombre }}</th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+    {% endblock %}

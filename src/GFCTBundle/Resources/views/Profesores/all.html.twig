@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Profesores{% endblock %}
+
+
+
+  {% block body %}
+  <h1>GFCT</h1><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">Panel heading</div>
+        <table class="table">
+        <tr>
+          <th><b>Id</b></th>
+          <th><b>Nombre</b></th>
+          <th><b>Apellido</b></th>
+          <th><b>Departamento</b></th>
+        </tr>
+        {% for profesores in profesores %}
+        <tr>
+          <th>{{ profesores.id}}</th>
+          <th>{{ profesores.nombre }}</th>
+          <th>{{ profesores.apellidos }}</th>
+          <th>{{ profesores.departamento }}</th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+    {% endblock %}

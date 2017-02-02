@@ -1,0 +1,19 @@
+body{
+	font-family: 'Raleway', sans-serif; 
+	background-color: orange;
+}
+
+#barra{
+	width: 70px;
+	background-color: #FF8000;
+	padding: 20px 20px 0px 20px;
+	position: absolute;
+	left: -92px;
+	z-index: 100;
+}
+
+#barra img{
+	margin-bottom: 20px;
+	border: 1px solid rgb(0,0,0);
+}
+

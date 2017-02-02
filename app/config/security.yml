@@ -1,0 +1,61 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        GFCTBundle\Entity\Usuario:
+            algorithm: bcrypt
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        our_db_provider:
+            entity:
+                class: GFCTBundle:Usuario
+                property: username
+        in_memory:
+            memory: 
+                users:
+                    admin:
+                        password: 1234
+                        roles: 'ROLE_ADMIN'
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+
+        usuarios:
+
+            pattern: ^/
+            anonymous: ~
+            provider: our_db_provider
+            form_login:
+                login_path: /usuarios/login
+                check_path: /usuarios/login
+            logout:
+                path:   /usuarios/logout
+                target: /usuarios    
+                
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+    - { path: ^/usuarios/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/Default/nuevoConf, roles: ROLE_SUPER_ADMIN }
+    - { path: ^/Default/Conf, roles: ROLE_SUPER_ADMIN }
+    - { path: ^/admin, roles: ROLE_ADMIN } #Creamos Role_admin para dar permisos de administrador 
+                                            # y lo metemos a mano en la base de datos en el usuario que quieras
+    - { path: ^/, roles: ROLE_USER }
+
+
+#No ponemos nada si hay un nuevo rol
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
